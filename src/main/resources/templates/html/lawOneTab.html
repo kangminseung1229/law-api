@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lawOneTab</title>
+</head>
+
+<header th:replace="fragments/cm_head.html :: header('법령목록')"></header>
+
+<body>
+
+    <h1>법령목록</h1>
+
+    <div >
+
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>lawnumber</th>
+                    <th>nowyearcode</th>
+                    <th>korlawname</th>
+                    <th>lawshortcutname</th>
+                    <th>lawid</th>
+                    <th>declaredate</th>
+                    <th>declarenumber</th>
+                    <th>updateflag</th>
+                    <th>gocode</th>
+                    <th>goname</th>
+                    <th>lawflag</th>
+                    <th>lawexecutiondate</th>
+                    <th>activeflag</th>
+                    <th>lawdetaillink</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each=" row : ${list}">
+                    <td th:text="${row.lawnumber}"></td>
+                    <td th:text="${row.nowyearcode}"></td>
+                    <td th:text="${row.korlawname}"></td>
+                    <td th:text="${row.lawshortcutname}"></td>
+                    <td th:text="${row.lawid}"></td>
+                    <td th:text="${row.declaredate}"></td>
+                    <td th:text="${row.declarenumber}"></td>
+                    <td th:text="${row.updateflag}"></td>
+                    <td th:text="${row.gocode}"></td>
+                    <td th:text="${row.goname}"></td>
+                    <td th:text="${row.lawflag}"></td>
+                    <td th:text="${row.lawexecutiondate}"></td>
+                    <td th:text="${row.activeflag}"></td>
+                    <td th:text="${row.lawdetaillink}"></td>
+                </tr>
+            </tbody>
+            
+        </table>
+
+    </div>
+    
+
+<footer th:replace="fragments/cm_foot.html :: footer('법령목록')"></footer>
+    
+</body>
+</html>
+
+<script>
+    
+    // $.ajax({
+    //     type: "get",
+    //     url: "/law-api/list",
+    //     data: "data",
+    //     dataType: "json",
+    //     success: function (response) {
+    //         $("#lawlist").text(response);
+    //     }
+    // });
+</script>
+
