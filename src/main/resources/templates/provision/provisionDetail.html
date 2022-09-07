@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .info {
+            background-color: aquamarine;
+            margin: auto;
+            width: 10%;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <div>
+
+        <div>
+            <table>
+                <thead>
+                    <h2>기본정보</h2>
+                </thead>
+                <tr>
+                    <td class="info">법령ID</td>
+                    <td><span th:utext="${provisionBasicInfomation.lawId}"></span> </td>
+                </tr>
+                <tr>
+                    <td class="info">공포일자</td>
+                    <td><span th:utext="${provisionBasicInfomation.proclamationDate}"></span> </td>
+                </tr>
+                <tr>
+                    <td class="info">공포번호</td>
+                    <td><span th:utext="${provisionBasicInfomation.proclamationNumber}"></span> </td>
+                </tr>
+                <tr>
+                    <td class="info">법령명_한글</td>
+                    <td><span th:utext="${provisionBasicInfomation.lawNickname}"></span> </td>
+                </tr>
+                <tr>
+                    <td class="info">법령명약칭</td>
+                    <td><span th:utext="${provisionBasicInfomation.lawNicknameAlias}"></span> </td>
+                </tr>
+                <tr>
+                    <td class="info">소관부처</td>
+                    <td><span th:utext="${provisionBasicInfomation.ministry}"></span> </td>
+                </tr>
+                <tr>
+                    <td class="info">시행일자</td>
+                    <td><span th:utext="${provisionBasicInfomation.enforceDate}"></span> </td>
+                </tr>
+                <tr>
+                    <td class="info">제개정구분</td>
+                    <td><span th:utext="${provisionBasicInfomation.modify}"></span> </td>
+                </tr>
+                <tr>
+                    <td class="info">조문시행일자문자열</td>
+                    <td><span th:utext="${provisionBasicInfomation.applicationDate}"></span> </td>
+                </tr>
+
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <table>
+                <thead>
+                    <h2>조문</h2>
+                </thead>
+
+                <tbody>
+
+                    <th:block th:each=" unit : ${provisionUnit}">
+
+                        <tr>
+                            <td class="info">조문키</td>
+                            <td>
+                                <span th:utext="${unit.provisionKey}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="info">조문여부</td>
+                            <td>
+                                <span th:utext="${unit.provisionFlag}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="info">조문번호</td>
+                            <td>
+                                <span th:utext="${unit.provisionNumber}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="info">조문가지번호</td>
+                            <td>
+                                <span th:utext="${unit.provisionBranchNumber}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="info">조문제목</td>
+                            <td>
+                                <span th:utext="${unit.provisionTitle}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="info">조문시행일자</td>
+                            <td>
+                                <span th:utext="${unit.provisionEnforceDate}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="info">조문변경여부</td>
+                            <td>
+                                <span th:utext="${unit.provisionUpdateFlag}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="info">조문내용</td>
+                            <td>
+                                <span th:utext="${unit.provisionContent}"></span>
+                            </td>
+                        </tr>
+
+
+                        <tr th:each=" paragraph : ${unit.paragraph}">
+                            <td class="info" > 항 </td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <span th:utext="${paragraph.paragraphNumber}"></span>
+                                            <span th:utext="${paragraph.paragraphModify}"></span>
+                                            <span th:utext="${paragraph.paragraphModifyDate}"></span>
+                                            <span th:utext="${paragraph.paragraphContent}"></span>
+                                            <th:block th:each=" subParagraph : ${paragraph.subParagraph}">
+                                                <span th:utext="${subParagraph.subParagraphNumber}"></span>
+                                                <span th:utext="${subParagraph.subParagraphContent}"></span>
+                                                <th:block th:each=" item : ${subParagraph.item}">
+                                                    <span th:utext="${item.itemNumber}"></span>
+                                                    <span th:utext="${item.itemContent}"></span>
+                                                </th:block>
+                                            </th:block>
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+
+
+                        <tr>
+                            <td class="info">조문참고자료</td>
+                            <td>
+                                <span th:utext="${unit.provisionReference}"></span>
+                            </td>
+                        </tr>
+
+                    </th:block>
+
+
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <table>
+                <thead>
+                    <h2>부칙</h2>
+                </thead>
+
+                <tbody>
+
+                    <th:blcok th:each=" unit : ${supplementaryUnit}" >
+                        <tr>
+                            <td class="info">부칙공포일자</td>
+                            <td><span th:utext="${unit.supplementaryProclamationDate}"></span></td>
+                        </tr>
+
+                        <tr>
+                            <td class="info">부칙공포번호</td>
+                            <td><span th:utext="${unit.supplementaryProclamationNumber}"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="info">부칙내용</td>
+                            <td><span th:utext="${unit.supplementaryContent}"></span></td>
+                        </tr>
+                        
+                    </th:blcok>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <table>
+                <thead>
+                    <h2>개정문</h2>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td class="info">개정문내용</td>
+                        <td><span th:utext="${amendment.amendmentContent}"></span></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <table>
+                <thead>
+                    <h2>제개정이유</h2>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td class="info">제개정이유내용</td>
+                        <td><span th:utext="${modifyReason.modifyReasonContent}"></span></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        </form>
+    </div>
+
+
+</body>
+
+</html>

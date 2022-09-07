@@ -1,4 +1,4 @@
-package kr.co.taxnet.law.module.law;
+package kr.co.taxnet.law.modules.law;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

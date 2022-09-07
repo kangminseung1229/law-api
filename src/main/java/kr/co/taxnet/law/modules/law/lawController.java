@@ -1,4 +1,4 @@
-package kr.co.taxnet.law.module.law;
+package kr.co.taxnet.law.modules.law;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import kr.co.taxnet.law.config.ApiInfo;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequestMapping("/law")
+@RequestMapping("/")
 @RequiredArgsConstructor
 public class lawController {
 
